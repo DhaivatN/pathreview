@@ -14,5 +14,12 @@ Normal responses and 429 responses both include `X-RateLimit-Limit` and `X-RateL
 
 ## Week 8 - Reproducing the issue and planning the fix
 
+**Reproduction commit link:** <https://github.com/DhaivatN/pathreview/commits/fix/86-api-rate-limit-headers/e4c2799f28d09afe0d8c58bfa5ed1901685a2e4b>
+
 **Reproduction summary:**
 I inspected the rate-limiting flow across `safety/rate_limiter.py` and `api/middleware/request_id.py`. The existing `RateLimiter.check_rate_limit()` logic already calculates whether a request is allowed and how many requests remain, so the server-side rate-limit state was already available. The gap was in the middleware/response layer: clients were not receiving `X-RateLimit-Limit` and `X-RateLimit-Remaining` on responses. In the current implementation, successful responses now include those headers, but the 429 early-return path still exits before adding them, which confirms the exact issue and shows the remaining work needed to fully satisfy issue #86.
+
+**PLAN.md link:** <https://github.com/DhaivatN/pathreview/blob/fix/86-api-rate-limit-headers/PLAN.md>
+
+**Blockers or open questions:**
+The main unknown is how the remaining quota should be represented on blocked requests (e.g., `0` vs another value), and whether existing tests already cover the middleware header behavior or if new tests are needed.
