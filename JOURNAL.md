@@ -53,3 +53,33 @@ Added `tests/unit/test_request_id_middleware.py`, which verifies that both 2xx r
 **Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
 **Draft PR feedback received from:** none
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No 
+
+**Summary of feedback:**
+No reviewer feedback assigned for this cohort.
+
+**How you responded:**
+N/A
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+The hardest part was just understanding Github commands and how they are tracked from the original fork, and managing branches. Other than that, tracing how the issue flowed across multiple layers of the project was an interesting challenge. On the issue, I had to understand the rate limiter, middleware wiring, request/response behavior, and test structure before I could make a change confidently. The biggest surprise was that a small user-facing feature could touch several files and still require careful coordination to avoid breaking existing behavior.
+
+**What did you learn about working in a large codebase?**
+I learned that large codebases require patience and discipline more than speed. It helped to read existing patterns, inspect related files before editing, and keep the scope of each change small. I also learned that working in someone else’s production-style code means respecting existing architecture, tests, and conventions instead of immediately changing the code to match my first instinct.
+
+**How did AI tools help — and where did they fall short?**
+AI tools were most useful for helping me navigate unfamiliar files, summarize what each module was doing, and suggest a starting point for the implementation and tests. They were less helpful when I needed to make the final call on code structure, resolve Git conflicts, or match the project’s exact conventions. In those moments I still had to inspect the code directly and verify every change myself.
+
+**What would you do differently if you started over?**
+I would start by reading the issue more carefully and mapping the affected files before making any code changes. I would also keep the journal and plan entries updated earlier so I didn’t have to backfill them during rebases and branch updates. Finally, I would verify the PR workflow sooner so I could spend less time on Git mechanics at the end.
+
+**What are you most proud of from this module?**
